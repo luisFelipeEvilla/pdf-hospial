@@ -129,6 +129,43 @@ El código compilado se generará en la carpeta `dist/`.
 - **typescript**: Compilador TypeScript
 - **tsx**: Ejecutor de TypeScript para desarrollo
 
+## Despliegue en Railway
+
+### Requisitos Previos
+
+1. Cuenta en [Railway](https://railway.app)
+2. Repositorio Git (GitHub, GitLab, etc.)
+
+### Pasos para Desplegar
+
+1. **Conecta tu repositorio a Railway:**
+   - Ve a tu dashboard de Railway
+   - Crea un nuevo proyecto
+   - Selecciona "Deploy from GitHub repo"
+   - Conecta tu repositorio
+
+2. **Configuración automática:**
+   - Railway detectará automáticamente que es un proyecto Node.js
+   - Usará el archivo `railway.json` para la configuración
+   - Ejecutará `pnpm build` para compilar
+   - Ejecutará `pnpm start` para iniciar el servidor
+
+3. **Variables de Entorno (opcional):**
+   - `PORT`: Railway asigna automáticamente el puerto, no es necesario configurarlo
+   - `HOST`: Por defecto usa `0.0.0.0` (necesario para Railway)
+
+4. **Verifica el despliegue:**
+   - Railway te proporcionará una URL pública
+   - Prueba el endpoint de salud: `https://tu-app.railway.app/health`
+   - Prueba generar un PDF: `POST https://tu-app.railway.app/api/generate-pdf`
+
+### Notas de Despliegue
+
+- El servidor está configurado para escuchar en `0.0.0.0` (necesario para Railway)
+- Railway asigna automáticamente el puerto a través de la variable `PORT`
+- Los archivos temporales se crean en `/tmp` en Railway (se limpian automáticamente)
+- El build se ejecuta automáticamente en cada push a la rama principal
+
 ## Notas
 
 - Las imágenes de fotografías se cargan automáticamente desde la URL base configurada

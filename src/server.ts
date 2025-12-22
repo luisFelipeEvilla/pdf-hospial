@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -43,12 +43,14 @@ app.post('/api/generate-pdf', async (req: Request, res: Response) => {
     await pdfService.generatePDF(ficha);
 
     // Generar nombre de archivo temporal
+    // En Railway, usar /tmp para archivos temporales (se limpia automáticamente)
+    const tempDir = process.env.RAILWAY_ENVIRONMENT ? '/tmp' : join(__dirname, '..', 'temp');
     const filename = `ficha-tecnica-${ficha.codigo || ficha.id}-${Date.now()}.pdf`;
-    const outputPath = join(__dirname, '..', 'temp', filename);
+    const outputPath = join(tempDir, filename);
 
     // Asegurar que el directorio temp existe
     try {
-      mkdirSync(join(__dirname, '..', 'temp'), { recursive: true });
+      mkdirSync(tempDir, { recursive: true });
     } catch (error) {
       // El directorio ya existe, ignorar
     }
@@ -111,12 +113,14 @@ app.get('/api/generate-pdf/:codigo', async (req: Request, res: Response) => {
     await pdfService.generatePDF(ficha);
 
     // Generar nombre de archivo temporal
+    // En Railway, usar /tmp para archivos temporales (se limpia automáticamente)
+    const tempDir = process.env.RAILWAY_ENVIRONMENT ? '/tmp' : join(__dirname, '..', 'temp');
     const filename = `ficha-tecnica-${ficha.codigo || ficha.id}-${Date.now()}.pdf`;
-    const outputPath = join(__dirname, '..', 'temp', filename);
+    const outputPath = join(tempDir, filename);
 
     // Asegurar que el directorio temp existe
     try {
-      mkdirSync(join(__dirname, '..', 'temp'), { recursive: true });
+      mkdirSync(tempDir, { recursive: true });
     } catch (error) {
       // El directorio ya existe, ignorar
     }
@@ -164,8 +168,10 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor PDF ejecutándose en http://localhost:${PORT}`);
+// Escuchar en 0.0.0.0 para Railway (necesario para deployment)
+const HOST = process.env.HOST || '0.0.0.0';
+app.listen(PORT, HOST, () => {
+  console.log(`Servidor PDF ejecutándose en http://${HOST}:${PORT}`);
   console.log(`Endpoints disponibles:`);
   console.log(`  POST /api/generate-pdf - Body: { "codigo": "HUB-12325" }`);
   console.log(`  GET  /api/generate-pdf/:codigo`);
