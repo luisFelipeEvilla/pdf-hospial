@@ -1,0 +1,102 @@
+[
+    {
+        "id": "45537",
+        "codigo": "HUB-12325",
+        "codigo_antiguo": "No Registra",
+        "placa_actual": null,
+        "ubicacion": "Hospitalizacion Medicina Interna 5\u00b0Piso",
+        "estado": "5",
+        "titularidad": "1",
+        "numero_factura": null,
+        "factura_escaneada": null,
+        "mes": "11",
+        "anio": "2025",
+        "costo": null,
+        "vida_util": null,
+        "avaluo": null,
+        "marca": "No Registra",
+        "modelo": "No Registra",
+        "serial": "No Registra",
+        "color": "Negro",
+        "proveedor": null,
+        "cilindraje": null,
+        "placa_vehicular": null,
+        "numero_motor": null,
+        "numero_chasis": null,
+        "observacion": "En Cuerina",
+        "nombre_general": "Sofa Reclinable",
+        "fecha_adquisicion": null,
+        "valor_adquisicion": null,
+        "funcionamiento": null,
+        "id_dependencia": "1065",
+        "id_unidad_funcional": "4",
+        "id_centro_costo": "80",
+        "id_responsable": null,
+        "id_subcategoria": "485",
+        "id_usuario_creacion": "271",
+        "created_at": "2025-11-28 15:44:31",
+        "updated_at": "2025-11-28 16:58:11",
+        "deleted_at": null,
+        "contable": "1",
+        "id_linea": "4",
+        "id_grupo": "5",
+        "id_subgrupo": "19",
+        "fecha_puesta_servicio": null,
+        "maneja_iva": "0",
+        "porcentaje_iva": null,
+        "numero_garantia": null,
+        "aplica_depreciacion": "1",
+        "vida_util_niif": null,
+        "valor_salvamento_niif": null,
+        "depreciacion_por_componentes": "0",
+        "importado": "0",
+        "cotizado": "0",
+        "subcategoria": {
+            "id": "485",
+            "id_categoria": "13",
+            "nombre": "Sofa Reclinable",
+            "codigo_sub_categoria": "212-0073",
+            "categoria": {
+                "id": "13",
+                "nombre": "EQUIPOS Y MAQ. DE OFICINA",
+                "id_cliente": "131"
+            }
+        },
+        "responsable": null,
+        "fotos": [
+            {
+                "id": "37567",
+                "nombre": "53020.jpg",
+                "id_producto": "45537"
+            },
+            {
+                "id": "37568",
+                "nombre": "53021.jpg",
+                "id_producto": "45537"
+            },
+            {
+                "id": "37569",
+                "nombre": "53022.jpg",
+                "id_producto": "45537"
+            }
+        ],
+        "cotizaciones": [],
+        "grupo": {
+            "id": "5",
+            "nombre": "MUEBLES Y ENCERES Y EQUIPO DE OFICINA",
+            "id_linea": "4",
+            "codigo_linea": "03",
+            "vida_util_niif_dias": "3650"
+        },
+        "dependencia": {
+            "id": "1065",
+            "nombre": "HOSPITALIZACION MEDICINA INTERNA 5\u00b0PISO HUJMB",
+            "video": null,
+            "id_piso": "5",
+            "id_sucursal": "3",
+            "id_consecutivo_codigo": "1",
+            "deleted_at": null,
+            "id_unidad_funcional": null
+        }
+    }
+]
